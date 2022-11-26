@@ -18,7 +18,7 @@ public class StartUIController : MonoBehaviour
     }    
     public void OnPlayButtonClicked(){
         InputController.Instance.playerInput.SwitchCurrentActionMap("Player");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("PlayScene");
     }
 
     public void OnCreditsButtonClicked(){
