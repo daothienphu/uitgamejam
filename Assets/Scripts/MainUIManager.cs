@@ -111,7 +111,7 @@ public class MainUIManager : MonoBehaviour
         upgradeMenu.gameObject.SetActive(true);
         harpoonSpeedText.text = $"Harpoon speed: {UpgradeManager.Instance.harpoonSpeed} -> {UpgradeManager.Instance.harpoonSpeed + 1}";
         harpoonRangeText.text = $"Harpoon range: {UpgradeManager.Instance.harpoonRange} -> {UpgradeManager.Instance.harpoonRange + 1}";
-        shipSpeedText.text = $"Harpoon range: {UpgradeManager.Instance.shipSpeed} -> {UpgradeManager.Instance.shipSpeed + 1}";
+        shipSpeedText.text = $"Ship speed: {UpgradeManager.Instance.shipSpeed} -> {UpgradeManager.Instance.shipSpeed + 1}";
 
         buyHarpoonRange.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Buy (${UpgradeManager.Instance.priceHarpoonRange})";
         buyHarpoonSpeed.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Buy (${UpgradeManager.Instance.priceHarpoonSpeed})";
