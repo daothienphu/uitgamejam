@@ -5,22 +5,14 @@ using UnityEngine;
 public class AudioButtonSprites : MonoBehaviour
 {
     [SerializeField]
-    private static Sprite OnState;
+    private Sprite OnState;
     
     [SerializeField]
-    private static Sprite OffState;
-
-    public static AudioButtonSprites Instance = null;
+    private Sprite OffState;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (Instance != null && Instance != this){
-            DestroyImmediate(this);
-        }
-        else{
-            Instance = this;
-        }
     }
 
     // Update is called once per frame
@@ -29,11 +21,11 @@ public class AudioButtonSprites : MonoBehaviour
         
     }
 
-    public static Sprite GetOffState() {
+    public Sprite GetOffState() {
         return OffState;
     }
     
-    public static Sprite GetOnState() {
+    public Sprite GetOnState() {
         return OnState;
     }
 }

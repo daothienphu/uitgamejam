@@ -9,6 +9,15 @@ public class MainUIManager : MonoBehaviour
     public Image upgradeMenu;
     public bool isMusicOn = true;
 
+    [SerializeField]
+    private Image audioButtonImage;
+
+    [SerializeField]
+    private Sprite audioButtonOnSprite;
+
+    [SerializeField]
+    private Sprite audioButtonOffSprite;
+
     void Start()
     {
         if (Instance != null && Instance != this){
@@ -41,11 +50,13 @@ public class MainUIManager : MonoBehaviour
         isMusicOn = !isMusicOn;
         if (!isMusicOn){
             MusicManager.Instance.TurnOffMusic();
-            MusicManager.Instance.gameObject.GetComponent<Image>().sprite = AudioButtonSprites.GetOffState();
+
+            audioButtonImage.sprite = audioButtonOffSprite;
         }
         else{
             MusicManager.Instance.TurnOnMusic();
-            MusicManager.Instance.gameObject.GetComponent<Image>().sprite = AudioButtonSprites.GetOnState();
+
+            audioButtonImage.sprite = audioButtonOnSprite;
         }
     }
 }
