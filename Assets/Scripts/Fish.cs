@@ -18,6 +18,8 @@ public class Fish : MonoBehaviour
     float randomDuration;
     Coroutine co = null;
 
+    public float minTimeToReachTarget = 2f;
+    public float maxTimeToReachTarget = 5f;
     bool isCaught = false;
     void Start()
     {
@@ -27,7 +29,7 @@ public class Fish : MonoBehaviour
 
         randomX = Random.Range(cam.transform.position.x - width / 2, cam.transform.position.x + width / 2);
         randomY = Random.Range(cam.transform.position.y - height / 2, cam.transform.position.y);
-        randomDuration = Random.Range(2f, 5f);
+        randomDuration = Random.Range(minTimeToReachTarget, maxTimeToReachTarget);
     }
 
     void Update()
@@ -44,7 +46,7 @@ public class Fish : MonoBehaviour
     IEnumerator SwimToTarget(){
         randomX = Random.Range(cam.transform.position.x - width / 2, cam.transform.position.x + width / 2);
         randomY = Random.Range(cam.transform.position.y - height / 2, cam.transform.position.y);
-        randomDuration = Random.Range(2f, 5f);
+        randomDuration = Random.Range(minTimeToReachTarget, maxTimeToReachTarget);
         float time = 0;
         Vector2 startPos = transform.position;
         Vector2 endTarget = new Vector2(randomX, randomY);
