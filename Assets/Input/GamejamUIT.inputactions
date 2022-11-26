@@ -24,9 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Prepare",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "678931ad-25f5-47b5-ad89-91040c662270",
+                    "id": "688a5d92-2676-43a9-9e70-473006f8235a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Upgrade",
+                    "type": "Button",
+                    "id": "52bb6e6e-f9c1-4b43-b52f-2bac93ea1d0c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -223,12 +232,23 @@
                 },
                 {
                     "name": "",
-                    "id": "ab94fcf5-0f8a-4f5b-87a7-08ca20b7c226",
+                    "id": "601f36de-2f8b-4ea4-a2c7-416ce375c7cc",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cdb38290-dd97-45c1-8134-b9ed5021097d",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Prepare",
+                    "action": "Upgrade",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -689,6 +709,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "032db56a-bbc7-49f6-9e3f-c7899bc978ea",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
