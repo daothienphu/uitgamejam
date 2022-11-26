@@ -36,7 +36,7 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PreventMoveAboveWaterSurface())
+        if (!PreventMoveAboveWaterSurface() && !PreventMoveBelowCamera())
         {
             SetMoveDirection();
         }
@@ -106,6 +106,17 @@ public class Fish : MonoBehaviour
         if (transform.position.y >= waterSurfaceTransform.position.y)
         {
             if (yAxisDirection != -1) yAxisDirection = -1;
+            return true;
+        }
+        return false;
+    }
+
+    private bool PreventMoveBelowCamera()
+    {
+        Vector3 cameraBottomVector = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0));
+        if (transform.position.y <= cameraBottomVector.y)
+        {
+            if (yAxisDirection != 1) yAxisDirection = 1;
             return true;
         }
         return false;
