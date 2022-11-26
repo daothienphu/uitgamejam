@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish : MonoBehaviour
+public class FishMovement : MonoBehaviour
 {
     // Don vi thoi gian la giay
 
+    [SerializeField]
     private float moveSpeed = 2f;
 
     private float moveDuration;
