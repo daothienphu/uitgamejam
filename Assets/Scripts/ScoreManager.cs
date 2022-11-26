@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     public Image pointer;
     public int minScore = -20;
     public int maxScore = 20;
+    public Image scoreBar;
     void Start()
     {
         if (Instance != null && Instance != this){
@@ -29,7 +30,7 @@ public class ScoreManager : MonoBehaviour
 
     void Update(){
         Vector3 pointerPos = pointer.rectTransform.localPosition;
-        pointerPos.x = score * 390 / maxScore;
+        pointerPos.x = score * 400 / maxScore;
         pointer.rectTransform.localPosition = pointerPos;
 
         if (score > 0){
@@ -39,7 +40,7 @@ public class ScoreManager : MonoBehaviour
         }
         else if (score < 0){
             Vector3 scale = negative.rectTransform.localScale;
-            scale.x = score;
+            scale.x = -score;
             negative.rectTransform.localScale = scale;
         }
         else{
