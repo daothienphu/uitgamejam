@@ -116,6 +116,7 @@ public class ControlShip : MonoBehaviour
         harpoon.position += Vector3.back;
 
         //comeback
+        harpoon.GetComponent<Collider2D>().enabled = false;
         startValue = harpoon.position;
         endValue = harpoonBasePos;
         time = 0;
