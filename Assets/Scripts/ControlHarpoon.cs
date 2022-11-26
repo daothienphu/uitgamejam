@@ -13,13 +13,17 @@ public class ControlHarpoon : MonoBehaviour
     public void CollectAllCaughtFishes(){
         foreach (var fish in caughtFishes){
             Debug.Log("Kill fish");
+            ScoreManager.Instance.IncreaseScore();
         }   
+        caughtFishes.Clear();
     }
 
     public void CollectAllCaughtTrashes(){
-        foreach (var fish in caughtFishes){
+        foreach (var trash in caughtTrashes){
             Debug.Log("Kill trash");
+            ScoreManager.Instance.DecreaseScore();
         } 
+        caughtTrashes.Clear();
     }
 
     void OnCollisionEnter2D(Collision2D col) {
