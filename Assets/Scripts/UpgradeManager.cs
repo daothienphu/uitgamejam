@@ -7,6 +7,10 @@ public class UpgradeManager : MonoBehaviour
     public float harpoonRange = 5f;
     public float harpoonSpeed = 9f;
     public float shipSpeed = 3f;
+
+    public int priceHarpoonRange;
+    public int priceHarpoonSpeed;
+    public int priceShipSpeed;
     bool isUpgradeMenuOpen = false;
     void Start()
     {

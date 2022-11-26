@@ -8,10 +8,10 @@ public class ControlShip : MonoBehaviour
     float height;
     float width;
 
-    public float shipMoveSpeed;
-    public float shootSpeed;
-    public float shootRange;
-    public float aimDegree;
+    float shipMoveSpeed;
+    float shootSpeed;
+    float shootRange;
+    float aimDegree = 35f;
     
     public float BounceHeight = 0.0001f;
     public float BounceRate = 3.0f;
@@ -146,6 +146,7 @@ public class ControlShip : MonoBehaviour
             float currentAngle = startAngle;
             while (time < duration)
             {
+                 Debug.Log("in lerp right");
                 if (isHarpoonShot){
                     break;
                 }
@@ -166,6 +167,7 @@ public class ControlShip : MonoBehaviour
             currentAngle = startAngle;
             while (time < duration)
             {
+                 Debug.Log("in lerp left");
                 if (isHarpoonShot){
                     break;
                 }
@@ -187,6 +189,7 @@ public class ControlShip : MonoBehaviour
     }
 
     void AimHarpoon() {
+        Debug.Log("in aimharpoon");
         isMovementLocked = true;
         StartCoroutine(LerpHarpoonRotation());
     }

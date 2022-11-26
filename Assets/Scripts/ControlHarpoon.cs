@@ -16,6 +16,7 @@ public class ControlHarpoon : MonoBehaviour
         foreach (var fish in caughtFishes){
             fish.GetComponent<Fish>().GetCaught();
             ScoreManager.Instance.DecreaseScore();
+            CoinManager.Instance.IncreaseCoin(fish.GetComponent<Fish>().coin);
         }   
         caughtFishes.Clear();
         for (int i = transform.childCount - 1;  i >= 0; --i){
@@ -31,6 +32,7 @@ public class ControlHarpoon : MonoBehaviour
         foreach (var trash in caughtTrashes){
             trash.GetComponent<Trash>().GetCaught();
             ScoreManager.Instance.IncreaseScore();
+            CoinManager.Instance.IncreaseCoin(trash.GetComponent<Trash>().coin);
         } 
         caughtTrashes.Clear();
         for (int i = transform.childCount - 1;  i >= 0; --i){

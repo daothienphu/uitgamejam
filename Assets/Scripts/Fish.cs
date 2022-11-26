@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {   
+    public int coin = 5;
     float aspect = (float)Screen.width / Screen.height;
     float height;
     float width;

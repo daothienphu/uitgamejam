@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {   
+    public int coin = 1;
     float aspect = (float)Screen.width / Screen.height;
     float height;
     float width;
