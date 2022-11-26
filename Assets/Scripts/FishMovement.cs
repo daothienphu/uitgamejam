@@ -91,7 +91,7 @@ public class FishMovement : MonoBehaviour
 
     void Move()
     {
-        transform.position = new Vector3(transform.position.x + moveSpeed * Time.deltaTime * xAxisDirection, transform.position.y + moveSpeed * Time.deltaTime * yAxisDirection);
+        transform.position += new Vector3(moveSpeed * Time.deltaTime * xAxisDirection, moveSpeed * Time.deltaTime * yAxisDirection, 0);
 
         moveDuration -= Time.deltaTime;
 
