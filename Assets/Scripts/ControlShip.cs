@@ -66,6 +66,7 @@ public class ControlShip : MonoBehaviour
         Vector3 pos = transform.position;
         pos += new Vector3(currentMovement.x, currentMovement.y, 0f) * shipMoveSpeed * Time.deltaTime;
         pos.x = Mathf.Max(cam.transform.position.x - width + 10, Mathf.Min(cam.transform.position.x + width - 10, pos.x));
+        transform.position = pos;
         
         Vector3 scale = harpoonString.localScale;
         float dist = (harpoon.position - harpoonHolder.position).magnitude;
