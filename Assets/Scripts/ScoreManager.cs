@@ -1,15 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
     public int score = 0;
+    public int countPos = 0;
+    public int countNeg = 0;
     public Image positive;
     public Image negative;
     public Image pointer;
     public int minScore = -20;
     public int maxScore = 20;
     public Image scoreBar;
+
+    public Transform plusOne;
+    public Transform minusOne;
+
     void Start()
     {
         if (Instance != null && Instance != this){
@@ -21,31 +28,39 @@ public class ScoreManager : MonoBehaviour
     }
 
     public void IncreaseScore(int amount = 1){
-        score = Mathf.Min(score + amount, maxScore);    
+
+        countPos = Mathf.Min(countPos + amount, maxScore);    
     }
     
     public void DecreaseScore(int amount = 1){
-        score = Mathf.Max(score - amount, minScore);
+        countNeg = Mathf.Max(countNeg - amount, minScore);
     }
 
     void Update(){
-        Vector3 pointerPos = pointer.rectTransform.localPosition;
-        pointerPos.x = score * 400 / maxScore;
-        pointer.rectTransform.localPosition = pointerPos;
+        // Vector3 pointerPos = pointer.rectTransform.localPosition;
+        // pointerPos.x = countPos * 400 / maxScore;
+        // pointer.rectTransform.localPosition = pointerPos;
 
-        if (score > 0){
-            Vector3 scale = positive.rectTransform.localScale;
-            scale.x = score;
-            positive.rectTransform.localScale = scale;
+       
+        Vector3 scale = positive.rectTransform.localScale;
+        scale.x = countPos;
+        positive.rectTransform.localScale = scale;
+       
+        scale = negative.rectTransform.localScale;
+        scale.x = -countNeg;
+        negative.rectTransform.localScale = scale;
+        
+    }
+
+    IEnumerator FloatingScore(Transform img) {
+        float duration = 0.5f;
+        float time = 0;
+        Transform imgInstance = Instantiate(img, transform.position + new Vector3(Random.Range(-3f, 4f), Random.Range(-3f, 4f), 0f), Quaternion.identity);
+        while (time < duration) {
+            imgInstance.position += Vector3.up * Time.deltaTime * 2f;
+            time += Time.deltaTime;
+            yield return null;    
         }
-        else if (score < 0){
-            Vector3 scale = negative.rectTransform.localScale;
-            scale.x = -score;
-            negative.rectTransform.localScale = scale;
-        }
-        else{
-            negative.rectTransform.localScale = new Vector3(0f, 1f, 1f);
-            positive.rectTransform.localScale = new Vector3(0f, 1f, 1f);
-        }
+        DestroyImmediate(imgInstance);
     }
 }

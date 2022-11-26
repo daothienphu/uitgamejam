@@ -2565,12 +2565,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  countPos: 0
+  countNeg: 0
   positive: {fileID: 1226565611}
   negative: {fileID: 1042025975}
   pointer: {fileID: 2052809523}
   minScore: -20
   maxScore: 20
   scoreBar: {fileID: 485049642}
+  plusOne: {fileID: 5754344069127717408, guid: 8b9032b25a19d13409b1d01989695539, type: 3}
+  minusOne: {fileID: 2556526688086558053, guid: 0581c9621be19fe429fdd6c3491c41da, type: 3}
 --- !u!1001 &907763462
 PrefabInstance:
   m_ObjectHideFlags: 0
