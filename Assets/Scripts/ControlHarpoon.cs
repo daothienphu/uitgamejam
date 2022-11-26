@@ -19,8 +19,12 @@ public class ControlHarpoon : MonoBehaviour
         }   
         caughtFishes.Clear();
         for (int i = transform.childCount - 1;  i >= 0; --i){
-            transform.GetChild(i).parent = fishes;
+            Transform child = transform.GetChild(i);
+            if (child.CompareTag("Fish")){
+                child.parent = fishes;
+            }
         }
+        transform.GetComponent<Collider2D>().enabled = true;
     }
 
     public void CollectAllCaughtTrashes(){
@@ -30,22 +34,26 @@ public class ControlHarpoon : MonoBehaviour
         } 
         caughtTrashes.Clear();
         for (int i = transform.childCount - 1;  i >= 0; --i){
-            transform.GetChild(i).parent = trashes;
+            Transform child = transform.GetChild(i);
+            if (child.CompareTag("Trash")){
+                child.parent = trashes;
+            }
         }
+        transform.GetComponent<Collider2D>().enabled = true;
     }
 
     void OnCollisionEnter2D(Collision2D col) {
         if (col.transform.CompareTag("Fish")){
-    
             col.transform.parent = transform;
             col.transform.GetComponent<Fish>().GetHooked();
             caughtFishes.Add(col.transform);
+            transform.GetComponent<Collider2D>().enabled = false;
         }
         else if (col.transform.CompareTag("Trash")){
-        
             col.transform.parent = transform;
             col.transform.GetComponent<Trash>().GetHooked();
             caughtTrashes.Add(col.transform);
+            transform.GetComponent<Collider2D>().enabled = false;
         }
     }
 }
