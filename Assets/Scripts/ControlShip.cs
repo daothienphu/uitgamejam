@@ -3,6 +3,11 @@ using UnityEngine.InputSystem;
 using System.Collections;
 public class ControlShip : MonoBehaviour
 {
+    float aspect = (float)Screen.width / Screen.height;
+    Camera cam;
+    float height;
+    float width;
+
     public float shipMoveSpeed;
     public float shootSpeed;
     public float shootRange;
@@ -29,6 +34,10 @@ public class ControlShip : MonoBehaviour
 
     void Start()
     {
+        cam = Camera.main;
+        height = cam.orthographicSize * 2;
+        width = height * aspect;      
+
         currentMovement = Vector2.zero;
         currentPos = transform.position;
 
@@ -54,7 +63,11 @@ public class ControlShip : MonoBehaviour
         shootRange = UpgradeManager.Instance.harpoonRange;
         shipMoveSpeed = UpgradeManager.Instance.shipSpeed;
         
-        transform.position += new Vector3(currentMovement.x, currentMovement.y, 0f) * shipMoveSpeed * Time.deltaTime;
+        Vector3 pos = transform.position;
+        pos += new Vector3(currentMovement.x, currentMovement.y, 0f) * shipMoveSpeed * Time.deltaTime;
+        pos.x = Mathf.Max(cam.transform.position.x - width + 10, Mathf.Min(cam.transform.position.x + width - 10, pos.x));
+        transform.position = pos;
+        
         Vector3 scale = harpoonString.localScale;
         float dist = (harpoon.position - harpoonHolder.position).magnitude;
         scale.y = dist;
@@ -169,7 +182,7 @@ public class ControlShip : MonoBehaviour
 
     void ShootHarpoon() {
         isHarpoonShot = true;
-        StartCoroutine(LerpHarpoonPosition(harpoon.TransformPoint(harpoon.localPosition + Vector3.up * shootRange), shootRange / shootSpeed));
+        StartCoroutine(LerpHarpoonPosition(harpoon.TransformPoint(harpoon.localPosition + Vector3.down * shootRange), shootRange / shootSpeed));
     }
 
     void AimHarpoon() {

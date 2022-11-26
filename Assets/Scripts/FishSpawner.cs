@@ -32,13 +32,14 @@ public class FishSpawner : MonoBehaviour
                     bool spawnOnTheLeft = Random.Range(0, 100) > 49;
                     Vector3 spawnPoint;
                     if (spawnOnTheLeft){
-                        spawnPoint = new Vector3(cam.transform.position.x - width / 2 - 40f, Random.Range(cam.transform.position.y - height / 2, cam.transform.position.y), 0f);
+                        spawnPoint = new Vector3(cam.transform.position.x - width / 2 - 10f, Random.Range(cam.transform.position.y - height / 2, cam.transform.position.y), 0f);
                     }
                     else{
-                        spawnPoint = new Vector3(cam.transform.position.x + width / 2 + 40f, Random.Range(cam.transform.position.y - height / 2, cam.transform.position.y), 0f);
+                        spawnPoint = new Vector3(cam.transform.position.x + width / 2 + 10f, Random.Range(cam.transform.position.y - height / 2, cam.transform.position.y), 0f);
                     }
                     t.position = spawnPoint;
                     t.gameObject.SetActive(true);
+                    t.GetComponent<Fish>().Respawn();
                 }
             }
         }
