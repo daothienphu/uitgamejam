@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish : MonoBehaviour
+public class Trash : MonoBehaviour
 {   
     float aspect = (float)Screen.width / Screen.height;
     float height;
@@ -27,7 +26,7 @@ public class Fish : MonoBehaviour
 
         randomX = Random.Range(cam.transform.position.x - width / 2, cam.transform.position.x + width / 2);
         randomY = Random.Range(cam.transform.position.y - height / 2, cam.transform.position.y);
-        randomDuration = Random.Range(2f, 5f);
+        randomDuration = Random.Range(10f, 20f);
     }
 
     void Update()

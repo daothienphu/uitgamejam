@@ -3,7 +3,7 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
-    int score = 0;
+    public int score = 0;
     public Image positive;
     public Image negative;
     public Image pointer;
