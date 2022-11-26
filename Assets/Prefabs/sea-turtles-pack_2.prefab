@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oriFacingLeft: 1
-  minTimeToReachTarget: 15
-  maxTimeToReachTarget: 20
+  minTimeToReachTarget: 2
+  maxTimeToReachTarget: 5
 --- !u!61 &274663572577014671
 BoxCollider2D:
   m_ObjectHideFlags: 0
