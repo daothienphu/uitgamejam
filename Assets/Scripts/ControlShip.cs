@@ -40,7 +40,13 @@ public class ControlShip : MonoBehaviour
         harpoonRotBase = new Vector3(0f, 0f, -aimDegree);
         harpoonString = harpoonHolder.GetChild(1);
         Vector3 dir = (harpoon.position - harpoonHolder.position);
+
+        Vector3 scale = harpoonString.localScale;
+        float dist = (harpoon.position - harpoonHolder.position).magnitude;
+        scale.y = dist;
+        harpoonString.localScale = scale;
         harpoonString.position = transform.position + dir.normalized * (dir.magnitude / 2);
+        harpoonString.position = transform.position + (harpoon.position - harpoonHolder.position).normalized * (dist / 2);
     }
 
     void Update(){
@@ -118,7 +124,7 @@ public class ControlShip : MonoBehaviour
      IEnumerator LerpHarpoonRotation()
     {
         while (!isHarpoonShot){
-            float duration = 2f;
+            float duration = 1.2f;
             //to right
             float time = 0f;
             float targetAngle = aimDegree;
