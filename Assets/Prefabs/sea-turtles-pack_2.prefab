@@ -119,9 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc2b8c7a0b1f4a4982dead911aa8e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin: 5
   oriFacingLeft: 1
-  minTimeToReachTarget: 2
-  maxTimeToReachTarget: 5
+  minTimeToReachTarget: 12
+  maxTimeToReachTarget: 15
 --- !u!61 &274663572577014671
 BoxCollider2D:
   m_ObjectHideFlags: 0
