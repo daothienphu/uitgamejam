@@ -50,23 +50,25 @@ public class Fish : MonoBehaviour
         float time = 0;
         Vector2 startPos = transform.position;
         Vector2 endTarget = new Vector2(randomX, randomY);
+        Vector3 scale = transform.localScale;
         if (endTarget.x > startPos.x){
             if (oriFacingLeft){
-                transform.localScale = new Vector3(-1f, 1f, 1f);
+                scale.x = -Mathf.Abs(scale.x);
             }     
             else{
-                transform.localScale = new Vector3(1f, 1f, 1f);
+                scale.x = Mathf.Abs(scale.x);
             }
         }
         else{
             if (oriFacingLeft)
             {
-                transform.localScale = new Vector3(1f, 1f, 1f);
+                scale.x = Mathf.Abs(scale.x);
             }
             else{
-                transform.localScale = new Vector3(-1f, 1f, 1f);
+                scale.x = -Mathf.Abs(scale.x);
             }
         }
+        transform.localScale = scale;
         while (time < randomDuration){
             transform.position = Vector2.Lerp(startPos, endTarget, time / randomDuration);
             time += Time.deltaTime;
