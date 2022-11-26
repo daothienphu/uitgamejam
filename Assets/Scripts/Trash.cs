@@ -17,6 +17,9 @@ public class Trash : MonoBehaviour
     float randomDuration;
     Coroutine co = null;
 
+    public float minTimeToReachTarget = 10f;
+    public float maxTimeToReachTarget = 20f; 
+
     bool isCaught = false;
     void Start()
     {
@@ -26,7 +29,7 @@ public class Trash : MonoBehaviour
 
         randomX = Random.Range(cam.transform.position.x - width / 2, cam.transform.position.x + width / 2);
         randomY = Random.Range(cam.transform.position.y - height / 2, cam.transform.position.y);
-        randomDuration = Random.Range(10f, 20f);
+        randomDuration = Random.Range(minTimeToReachTarget, maxTimeToReachTarget);
     }
 
     void Update()
@@ -43,7 +46,7 @@ public class Trash : MonoBehaviour
     IEnumerator SwimToTarget(){
         randomX = Random.Range(cam.transform.position.x - width / 2, cam.transform.position.x + width / 2);
         randomY = Random.Range(cam.transform.position.y - height / 2, cam.transform.position.y);
-        randomDuration = Random.Range(2f, 5f);
+        randomDuration = Random.Range(minTimeToReachTarget, maxTimeToReachTarget);
         float time = 0;
         Vector2 startPos = transform.position;
         Vector2 endTarget = new Vector2(randomX, randomY);
