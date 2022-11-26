@@ -12,10 +12,10 @@ public class Fish : MonoBehaviour
 
     private enum MOVE_DIRECTION
     {
-        LEFT = 0, RIGHT = 1, UP = 2, DOWN = 3, TOTAL_DIRECTIONS = 4
+        LEFT, RIGHT, UP, DOWN, UP_LEFT, UP_RIGHT, DOWN_LEFT, DOWN_RIGHT, TOTAL_DIRECTIONS
     }
 
-    private const float MAX_MOVE_DURATION = 1f;
+    private const float MAX_MOVE_DURATION = 5f;
 
     private int moveDirection;
 
@@ -29,7 +29,12 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int xAxisDirection = 0;
+        Move();
+    }
+
+    void Move()
+    {
+                int xAxisDirection = 0;
         int yAxisDirection = 0;
 
         if (moveDirection == (int)MOVE_DIRECTION.UP)
@@ -51,6 +56,26 @@ public class Fish : MonoBehaviour
         {
             xAxisDirection = 1;
             yAxisDirection = 0;
+        }
+        if (moveDirection == (int)MOVE_DIRECTION.UP_LEFT)
+        {
+            xAxisDirection = -1;
+            yAxisDirection = 1;
+        }
+        if (moveDirection == (int)MOVE_DIRECTION.UP_RIGHT)
+        {
+            xAxisDirection = 1;
+            yAxisDirection = 1;
+        }
+        if (moveDirection == (int)MOVE_DIRECTION.DOWN_LEFT)
+        {
+            xAxisDirection = -1;
+            yAxisDirection = -1;
+        }
+        if (moveDirection == (int)MOVE_DIRECTION.DOWN_RIGHT)
+        {
+            xAxisDirection = 1;
+            yAxisDirection = -1;
         }
 
         transform.position = new Vector3(transform.position.x + moveSpeed * Time.deltaTime * xAxisDirection, transform.position.y + moveSpeed * Time.deltaTime * yAxisDirection);
