@@ -36,12 +36,13 @@ public class ScoreManager : MonoBehaviour
         countNeg = Mathf.Max(countNeg - amount, minScore);
     }
 
-    void Update(){
-        // Vector3 pointerPos = pointer.rectTransform.localPosition;
-        // pointerPos.x = countPos * 400 / maxScore;
-        // pointer.rectTransform.localPosition = pointerPos;
-
-       
+    void Update(){       
+        if (countPos >= maxScore){
+            MainUIManager.Instance.OnWin();
+        }
+        if (countNeg <= minScore){
+            MainUIManager.Instance.OnLose();
+        }
         Vector3 scale = positive.rectTransform.localScale;
         scale.x = countPos;
         positive.rectTransform.localScale = scale;
@@ -49,7 +50,6 @@ public class ScoreManager : MonoBehaviour
         scale = negative.rectTransform.localScale;
         scale.x = -countNeg;
         negative.rectTransform.localScale = scale;
-        
     }
 
     IEnumerator FloatingScore(Transform img) {

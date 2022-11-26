@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MainUIManager : MonoBehaviour
 {
@@ -8,6 +8,8 @@ public class MainUIManager : MonoBehaviour
     public Image pauseMenu;
     public Image upgradeMenu;
     public bool isMusicOn = true;
+    public Image losePanel;
+    public Image winPanel;
 
     void Start()
     {
@@ -17,7 +19,9 @@ public class MainUIManager : MonoBehaviour
         else{
             Instance = this;
         }
-        //pauseMenu.gameObject.SetActive(false);
+        pauseMenu.gameObject.SetActive(false);
+        losePanel.gameObject.SetActive(false);
+        winPanel.gameObject.SetActive(false);
         //upgradeMenu.gameObject.SetActive(false);
     }
 
@@ -30,10 +34,12 @@ public class MainUIManager : MonoBehaviour
     }
 
     public void OnPauseButtonClicked(){
+        Time.timeScale = 0.1f;
         pauseMenu.gameObject.SetActive(true);
     }
 
     public void OnPausePanelCloseButtonClicked(){
+        Time.timeScale = 1f;
         pauseMenu.gameObject.SetActive(false);
     }
 
@@ -45,5 +51,20 @@ public class MainUIManager : MonoBehaviour
         else{
             MusicManager.Instance.TurnOnMusic();
         }
+    }
+
+    public void OnBackToMenuButtonClicked(){
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("StartScene");
+    }
+
+    public void OnLose(){
+        Time.timeScale = 0.1f;
+        losePanel.gameObject.SetActive(true);
+    }
+
+    public void OnWin(){
+        Time.timeScale = 0.1f;
+        winPanel.gameObject.SetActive(true);
     }
 }
