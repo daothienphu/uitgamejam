@@ -37,12 +37,6 @@ public class ScoreManager : MonoBehaviour
     }
 
     void Update(){       
-        if (countPos >= maxScore){
-            MainUIManager.Instance.OnWin();
-        }
-        if (countNeg <= minScore){
-            MainUIManager.Instance.OnLose();
-        }
         Vector3 scale = positive.rectTransform.localScale;
         scale.x = countPos;
         positive.rectTransform.localScale = scale;
@@ -50,6 +44,12 @@ public class ScoreManager : MonoBehaviour
         scale = negative.rectTransform.localScale;
         scale.x = -countNeg;
         negative.rectTransform.localScale = scale;
+        if (countPos >= maxScore){
+            MainUIManager.Instance.OnWin();
+        }
+        if (countNeg <= minScore){
+            MainUIManager.Instance.OnLose();
+        }
     }
 
     IEnumerator FloatingScore(Transform img) {

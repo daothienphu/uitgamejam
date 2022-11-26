@@ -146,7 +146,6 @@ public class ControlShip : MonoBehaviour
             float currentAngle = startAngle;
             while (time < duration)
             {
-                 Debug.Log("in lerp right");
                 if (isHarpoonShot){
                     break;
                 }
@@ -167,7 +166,6 @@ public class ControlShip : MonoBehaviour
             currentAngle = startAngle;
             while (time < duration)
             {
-                 Debug.Log("in lerp left");
                 if (isHarpoonShot){
                     break;
                 }
@@ -189,7 +187,6 @@ public class ControlShip : MonoBehaviour
     }
 
     void AimHarpoon() {
-        Debug.Log("in aimharpoon");
         isMovementLocked = true;
         StartCoroutine(LerpHarpoonRotation());
     }
