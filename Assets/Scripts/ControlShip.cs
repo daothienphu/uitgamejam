@@ -13,8 +13,8 @@ public class ControlShip : MonoBehaviour
         
     }
 
-    public void Move(
-){
+    public void Move()
+    {
     
     }
 }
