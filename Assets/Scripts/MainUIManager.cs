@@ -19,6 +19,16 @@ public class MainUIManager : MonoBehaviour
     Button buyHarpoonSpeed;
     Button buyHarpoonRange;
     Button buyShipSpeed;
+
+    [SerializeField]
+    private Image audioButtonImage;
+
+    [SerializeField]
+    private Sprite audioButtonOnSprite;
+
+    [SerializeField]
+    private Sprite audioButtonOffSprite;
+
     void Start()
     {
         if (Instance != null && Instance != this){
@@ -63,9 +73,13 @@ public class MainUIManager : MonoBehaviour
         isMusicOn = !isMusicOn;
         if (!isMusicOn){
             MusicManager.Instance.TurnOffMusic();
+
+            audioButtonImage.sprite = audioButtonOffSprite;
         }
         else{
             MusicManager.Instance.TurnOnMusic();
+
+            audioButtonImage.sprite = audioButtonOnSprite;
         }
     }
 
