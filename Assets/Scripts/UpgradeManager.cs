@@ -4,6 +4,8 @@ public class UpgradeManager : MonoBehaviour
 {
     public static UpgradeManager Instance;
 
+    
+
     public float harpoonRange = 5f;
     public float harpoonSpeed = 9f;
     public float shipSpeed = 3f;
