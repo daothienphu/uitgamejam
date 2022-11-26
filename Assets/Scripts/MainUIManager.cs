@@ -41,9 +41,11 @@ public class MainUIManager : MonoBehaviour
         isMusicOn = !isMusicOn;
         if (!isMusicOn){
             MusicManager.Instance.TurnOffMusic();
+            MusicManager.Instance.gameObject.GetComponent<Image>().sprite = AudioButtonSprites.GetOffState();
         }
         else{
             MusicManager.Instance.TurnOnMusic();
+            MusicManager.Instance.gameObject.GetComponent<Image>().sprite = AudioButtonSprites.GetOnState();
         }
     }
 }
