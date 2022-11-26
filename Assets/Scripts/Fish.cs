@@ -19,6 +19,13 @@ public class Fish : MonoBehaviour
 
     private int moveDirection;
 
+    private int xAxisDirection = 0;
+
+    private int yAxisDirection = 0;
+
+    [SerializeField]
+    private Transform waterSurfaceTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,14 +36,16 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!PreventMoveAboveWaterSurface())
+        {
+            SetMoveDirection();
+        }
+
         Move();
     }
 
-    void Move()
+    void SetMoveDirection()
     {
-                int xAxisDirection = 0;
-        int yAxisDirection = 0;
-
         if (moveDirection == (int)MOVE_DIRECTION.UP)
         {
             xAxisDirection = 0;
@@ -77,16 +86,28 @@ public class Fish : MonoBehaviour
             xAxisDirection = 1;
             yAxisDirection = -1;
         }
+    }
 
+    void Move()
+    {
         transform.position = new Vector3(transform.position.x + moveSpeed * Time.deltaTime * xAxisDirection, transform.position.y + moveSpeed * Time.deltaTime * yAxisDirection);
 
         moveDuration -= Time.deltaTime;
-        Debug.Log(moveDuration);
 
         if (moveDuration <= 0)
         {
             moveDuration = Random.Range(0, MAX_MOVE_DURATION);
             moveDirection = Random.Range(0, (int)MOVE_DIRECTION.TOTAL_DIRECTIONS);
         }
+    }
+
+    private bool PreventMoveAboveWaterSurface()
+    {
+        if (transform.position.y >= waterSurfaceTransform.position.y)
+        {
+            if (yAxisDirection != -1) yAxisDirection = -1;
+            return true;
+        }
+        return false;
     }
 }
